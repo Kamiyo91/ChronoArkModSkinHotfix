@@ -58,6 +58,7 @@ namespace KamiyoModSkinHotfix
                 if (SaveManager.NowData.EnableSkins == null) return;
                 foreach (var skinData in __state.Where(skinData => (ModManager.IsModAddedGDE(skinData.skinKey) || ModManager.IsModAddedGDE(skinData.charKey)) && !SaveManager.NowData.EnableSkins.Contains(skinData)))
                     SaveManager.NowData.EnableSkins.Add(skinData);
+                __state = new List<SkinData>();
             }
         }
     }
