@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34916.146
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KamiyoModSkinHotfix", "KamiyoModSkinHotfix.csproj", "{F6DA372C-0660-4E85-8A38-639C004444F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6DA372C-0660-4E85-8A38-639C004444F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6DA372C-0660-4E85-8A38-639C004444F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2EE22EB7-DAC0-4F4A-8E54-9675D119DD5F}
+	EndGlobalSection
+EndGlobal
