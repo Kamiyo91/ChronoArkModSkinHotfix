@@ -38,16 +38,16 @@ namespace KamiyoModSkinHotfix
             [HarmonyPatch(typeof(CharacterSkinUI), nameof(CharacterSkinUI.CheckSkinUnlock))]
             public static void CharacterSkinUI_CheckSkinUnlock(SkinPrefab s, ref bool __result)
             {
-                if (s._skinData?.Key == null) return;
-                __result |= ModManager.IsModAddedGDE(s._skinData.Key) || ModManager.IsModAddedGDE(s._charData.Key);
+                __result |= s._skinData?.Key == null || ModManager.IsModAddedGDE(s._skinData.Key) || ModManager.IsModAddedGDE(s._charData.Key);
             }
 
             [HarmonyPrefix]
             [HarmonyPatch(typeof(CharacterSkinData), nameof(CharacterSkinData.ChangeToBasicSkin))]
             public static void CharacterSkinData_ChangeToBasicSkin(ref List<SkinData> __state)
             {
-                __state = new List<SkinData>();
+                __state = null;
                 if (SaveManager.NowData.EnableSkins == null) return;
+                __state = new List<SkinData>();
                 __state.AddRange(SaveManager.NowData.EnableSkins);
             }
 
@@ -55,10 +55,9 @@ namespace KamiyoModSkinHotfix
             [HarmonyPatch(typeof(CharacterSkinData), nameof(CharacterSkinData.ChangeToBasicSkin))]
             public static void CharacterSkinData_ChangeToBasicSkin_Post(ref List<SkinData> __state)
             {
-                if (SaveManager.NowData.EnableSkins == null) return;
-                foreach (var skinData in __state.Where(skinData => (ModManager.IsModAddedGDE(skinData.skinKey) || ModManager.IsModAddedGDE(skinData.charKey)) && !SaveManager.NowData.EnableSkins.Contains(skinData)))
+                if (SaveManager.NowData.EnableSkins == null || __state == null) return;
+                foreach (var skinData in __state.Where(skinData => ModManager.IsModAddedGDE(skinData.skinKey) && !SaveManager.NowData.EnableSkins.Contains(skinData)))
                     SaveManager.NowData.EnableSkins.Add(skinData);
-                __state = new List<SkinData>();
             }
         }
     }
